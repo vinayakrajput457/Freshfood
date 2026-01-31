@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshFood - Start Here</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            width: 100%;
+            padding: 50px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #FF6B35;
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FF6B35, #e55a2b);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #f5f5f5;
+        }
+
+        .info-box {
+            background: #f5f5f5;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .info-box h3 {
+            color: #FF6B35;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-box li {
+            padding: 8px 0;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .info-box li:last-child {
+            border-bottom: none;
+        }
+
+        .info-box strong {
+            color: #FF6B35;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .feature {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+        }
+
+        .feature:hover {
+            border-color: #FF6B35;
+            color: #FF6B35;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #ddd;
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🍕 FreshFood</h1>
+        <p class="subtitle">Premium Food Delivery E-Commerce Platform</p>
+
+        <div class="button-group">
+            <a href="index.html" class="btn btn-primary">🚀 Start Shopping</a>
+            <a href="README.md" class="btn btn-secondary">📖 Read Docs</a>
+        </div>
+
+        <div class="grid">
+            <a href="index.html" class="card" style="background: linear-gradient(135deg, #FF6B35, #e55a2b);">
+                <div class="card-icon">🏠</div>
+                <h3>Home Page</h3>
+                <p>Browse featured products and explore categories</p>
+            </a>
+
+            <a href="products.html" class="card" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                <div class="card-icon">🛍️</div>
+                <h3>Products</h3>
+                <p>Filter, sort, and search from our full catalog</p>
+            </a>
+
+            <a href="login.html" class="card" style="background: linear-gradient(135deg, #004E89, #1a7a96);">
+                <div class="card-icon">🔐</div>
+                <h3>Login</h3>
+                <p>Sign in to your account or create a new one</p>
+            </a>
+
+            <a href="cart.html" class="card" style="background: linear-gradient(135deg, #4CAF50, #45a049);">
+                <div class="card-icon">🛒</div>
+                <h3>Cart</h3>
+                <p>Review items, apply promo codes, checkout</p>
+            </a>
+        </div>
+
+        <div class="info-box">
+            <h3>🚀 Quick Start</h3>
+            <ul>
+                <li>📖 <strong>New to FreshFood?</strong> Read <a href="QUICK_START.md" style="color: #FF6B35; text-decoration: none;">QUICK_START.md</a></li>
+                <li>🧪 <strong>Want to test?</strong> Check <a href="TESTING_GUIDE.md" style="color: #FF6B35; text-decoration: none;">TESTING_GUIDE.md</a></li>
+                <li>📚 <strong>Full documentation?</strong> See <a href="README.md" style="color: #FF6B35; text-decoration: none;">README.md</a></li>
+                <li>📋 <strong>File overview?</strong> View <a href="FILE_LISTING.md" style="color: #FF6B35; text-decoration: none;">FILE_LISTING.md</a></li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h3>✨ Features</h3>
+            <div class="features">
+                <div class="feature">✓ Responsive Design</div>
+                <div class="feature">✓ User Auth</div>
+                <div class="feature">✓ Shopping Cart</div>
+                <div class="feature">✓ Checkout</div>
+                <div class="feature">✓ Promo Codes</div>
+                <div class="feature">✓ Product Search</div>
+                <div class="feature">✓ Filtering</div>
+                <div class="feature">✓ Sorting</div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>🔑 Demo Credentials</h3>
+            <ul>
+                <li><strong>Email:</strong> john@example.com</li>
+                <li><strong>Password:</strong> password123</li>
+            </ul>
+            <p style="margin-top: 15px; color: #666;">Or create your own account via registration</p>
+        </div>
+
+        <div class="info-box">
+            <h3>🎁 Promo Codes</h3>
+            <ul>
+                <li><strong>SAVE10</strong> - Get 10% discount</li>
+                <li><strong>SAVE5</strong> - Get $5 off</li>
+                <li><strong>FREEDELIVER</strong> - Free delivery</li>
+                <li><strong>WELCOME</strong> - 15% off</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h3>📁 Project Files</h3>
+            <ul>
+                <li><strong>HTML Pages:</strong> 7 files (home, products, login, register, cart, checkout, settings)</li>
+                <li><strong>CSS Styles:</strong> 2 files (main + responsive)</li>
+                <li><strong>JavaScript:</strong> 6 files (data, auth, main, products, cart, checkout)</li>
+                <li><strong>Documentation:</strong> 4 guides + this file</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h3>💡 Tips</h3>
+            <ul>
+                <li>No server needed - just open index.html</li>
+                <li>All data stored locally in your browser</li>
+                <li>Works offline (except external CDN icons)</li>
+                <li>Fully responsive on mobile, tablet, and desktop</li>
+                <li>Customize colors and products in code</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>✨ Complete food e-commerce website built with HTML, CSS, and JavaScript</p>
+            <p>Created with ❤️ for food lovers • Ready to use • Free to modify</p>
+            <p style="margin-top: 15px;">Questions? Check README.md or QUICK_START.md</p>
+        </div>
+    </div>
+</body>
+</html>

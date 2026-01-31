@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - FreshFood</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <i class="fas fa-utensils"></i>
+                    <span>FreshFood</span>
+                </div>
+                <div class="nav-menu" id="navMenu">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="products.html" class="nav-link">Products</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <h1>Checkout</h1>
+    </section>
+
+    <!-- Checkout Section -->
+    <section class="checkout-section">
+        <div class="container">
+            <div class="checkout-wrapper">
+                <!-- Checkout Form -->
+                <div class="checkout-form">
+                    <!-- Progress Steps -->
+                    <div class="checkout-steps">
+                        <div class="step active" data-step="1">
+                            <div class="step-number">1</div>
+                            <div class="step-label">Delivery</div>
+                        </div>
+                        <div class="step" data-step="2">
+                            <div class="step-number">2</div>
+                            <div class="step-label">Payment</div>
+                        </div>
+                        <div class="step" data-step="3">
+                            <div class="step-number">3</div>
+                            <div class="step-label">Review</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 1: Delivery Information -->
+                    <div class="checkout-step active" id="step1">
+                        <h2>Delivery Information</h2>
+                        <form id="deliveryForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address">Street Address</label>
+                                <input type="text" id="address" name="address" placeholder="Enter your street address" required>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" name="city" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State</label>
+                                    <input type="text" id="state" name="state" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="zip">ZIP Code</label>
+                                    <input type="text" id="zip" name="zip" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="instructions">Delivery Instructions</label>
+                                <textarea id="instructions" name="instructions" rows="3" placeholder="Any special instructions for delivery"></textarea>
+                            </div>
+
+                            <div class="delivery-options">
+                                <h3>Delivery Time</h3>
+                                <label class="radio-option">
+                                    <input type="radio" name="deliveryTime" value="asap" checked>
+                                    <span>As Soon As Possible (30-45 mins)</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="deliveryTime" value="scheduled">
+                                    <span>Schedule for Later</span>
+                                </label>
+                                <input type="datetime-local" id="scheduledTime" name="scheduledTime" style="display:none; margin-top: 10px;">
+                            </div>
+
+                            <button type="button" class="btn btn-primary" onclick="nextStep()">Continue to Payment</button>
+                        </form>
+                    </div>
+
+                    <!-- Step 2: Payment Information -->
+                    <div class="checkout-step" id="step2">
+                        <h2>Payment Information</h2>
+                        <form id="paymentForm">
+                            <div class="payment-methods">
+                                <label class="payment-option active">
+                                    <input type="radio" name="paymentMethod" value="card" checked>
+                                    <span><i class="fas fa-credit-card"></i> Credit/Debit Card</span>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="paymentMethod" value="paypal">
+                                    <span><i class="fab fa-paypal"></i> PayPal</span>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="paymentMethod" value="wallet">
+                                    <span><i class="fas fa-wallet"></i> Digital Wallet</span>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="paymentMethod" value="cod">
+                                    <span><i class="fas fa-money-bill"></i> Cash on Delivery</span>
+                                </label>
+                            </div>
+
+                            <div id="cardPayment">
+                                <div class="form-group">
+                                    <label for="cardName">Name on Card</label>
+                                    <input type="text" id="cardName" name="cardName" placeholder="John Doe" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cardNumber">Card Number</label>
+                                    <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="expiry">Expiry Date</label>
+                                        <input type="text" id="expiry" name="expiry" placeholder="MM/YY" maxlength="5" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cvv">CVV</label>
+                                        <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" name="sameAsDelivery" checked>
+                                    Billing address same as delivery address
+                                </label>
+                            </div>
+
+                            <div class="button-group">
+                                <button type="button" class="btn btn-secondary" onclick="previousStep()">Back</button>
+                                <button type="button" class="btn btn-primary" onclick="nextStep()">Continue to Review</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Step 3: Order Review -->
+                    <div class="checkout-step" id="step3">
+                        <h2>Review Your Order</h2>
+                        <div class="review-section">
+                            <h3>Delivery Details</h3>
+                            <div id="reviewDelivery"></div>
+                        </div>
+
+                        <div class="review-section">
+                            <h3>Payment Method</h3>
+                            <div id="reviewPayment"></div>
+                        </div>
+
+                        <div class="review-section">
+                            <h3>Order Items</h3>
+                            <div id="reviewItems"></div>
+                        </div>
+
+                        <div class="button-group">
+                            <button type="button" class="btn btn-secondary" onclick="previousStep()">Back</button>
+                            <button type="button" class="btn btn-primary" onclick="placeOrder()">Place Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary Sidebar -->
+                <aside class="order-summary">
+                    <h3>Order Summary</h3>
+                    <div id="summaryItems"></div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-item">
+                        <span>Subtotal:</span>
+                        <span id="summarySubtotal">$0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Delivery:</span>
+                        <span id="summaryDelivery">$3.99</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Tax:</span>
+                        <span id="summaryTax">$0.00</span>
+                    </div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-item total">
+                        <span>Total:</span>
+                        <span id="summaryTotal">$0.00</span>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About FreshFood</h4>
+                    <p>We deliver fresh, delicious food right to your doorstep with the best quality and fastest service.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#privacy">Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>Email: info@freshfood.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                    <p>Address: 123 Food Street, City, State</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 FreshFood. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>

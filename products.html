@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - FreshFood</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <i class="fas fa-utensils"></i>
+                    <span>FreshFood</span>
+                </div>
+                <div class="nav-menu" id="navMenu">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="products.html" class="nav-link active">Products</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                <div class="nav-actions">
+                    <a href="cart.html" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </a>
+                    <button class="user-menu-btn" id="userMenuBtn">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="login.html" id="loginLink">Login</a>
+                        <a href="register.html" id="registerLink">Register</a>
+                        <a href="#" id="profileLink" style="display:none;">My Profile</a>
+                        <a href="#" id="ordersLink" style="display:none;">Orders</a>
+                        <a href="#" id="logoutLink" style="display:none;">Logout</a>
+                    </div>
+                </div>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <h1>Our Products</h1>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <div class="products-wrapper">
+                <!-- Sidebar Filters -->
+                <aside class="filters-sidebar">
+                    <h3>Filters</h3>
+                    
+                    <div class="filter-group">
+                        <h4>Categories</h4>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" value="Pizza" onchange="applyFilters()">
+                            <span>Pizza</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" value="Burgers" onchange="applyFilters()">
+                            <span>Burgers</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" value="Desserts" onchange="applyFilters()">
+                            <span>Desserts</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" value="Beverages" onchange="applyFilters()">
+                            <span>Beverages</span>
+                        </label>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Price Range</h4>
+                        <input type="range" id="priceRange" min="0" max="50" value="50" onchange="applyFilters()">
+                        <p>Up to $<span id="priceValue">50</span></p>
+                    </div>
+
+                    <button class="btn btn-secondary" onclick="resetFilters()" style="width: 100%; margin-top: 20px;">Reset Filters</button>
+                </aside>
+
+                <!-- Products Grid -->
+                <main class="products-main">
+                    <div class="products-header">
+                        <div class="sort-control">
+                            <label for="sortBy">Sort By:</label>
+                            <select id="sortBy" onchange="sortProducts()">
+                                <option value="name">Name</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="rating">Rating</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="products-grid" id="productsGrid">
+                        <!-- Products will be loaded here -->
+                    </div>
+
+                    <div id="noProducts" class="no-products" style="display:none;">
+                        <p>No products found matching your criteria.</p>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Detail Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeProductModal()">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalImage" src="" alt="Product">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modalName"></h2>
+                    <div class="modal-rating">
+                        <span id="modalRating"></span>
+                        <span id="modalReviews"></span>
+                    </div>
+                    <p id="modalDescription"></p>
+                    <div class="modal-price">
+                        <span id="modalPrice"></span>
+                    </div>
+                    <div class="modal-quantity">
+                        <button class="qty-btn" onclick="decreaseQty()">-</button>
+                        <input type="number" id="modalQty" value="1" min="1" readonly>
+                        <button class="qty-btn" onclick="increaseQty()">+</button>
+                    </div>
+                    <button class="btn btn-primary" onclick="addToCartFromModal()" style="width: 100%; margin-top: 20px;">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About FreshFood</h4>
+                    <p>We deliver fresh, delicious food right to your doorstep with the best quality and fastest service.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#privacy">Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>Email: info@freshfood.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                    <p>Address: 123 Food Street, City, State</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 FreshFood. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/products.js"></script>
+</body>
+</html>
